@@ -25,7 +25,7 @@ console.log(myCrazyBlockName); // something handy
 </script>
 ```
 
-Blocks can also pass through webpack loaders as if they were individual files:
+Blocks can also be processed by webpack loaders as if they were individual files:
 
 ```js
 // webpack.config.js
