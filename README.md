@@ -1,10 +1,10 @@
 # collocate-loader [![Build Status](https://travis-ci.org/sndrs/collocate-loader.svg?branch=master)](https://travis-ci.org/sndrs/collocate-loader) [![Coverage Status](https://coveralls.io/repos/github/sndrs/collocate-loader/badge.svg?branch=master)](https://coveralls.io/github/sndrs/collocate-loader?branch=master)
 
-Experimental webpack loader for collocated modules.
+Experimental webpack loader for collocated modules. Very much inspired by [`.vue`](https://vuejs.org/v2/guide/single-file-components.html) and [svelte](https://svelte.technology/guide#understanding-svelte-components) components, but (almost) completely unopinionated about your blocks and their behaviour.
 
 ## Example
 
-By default, the content of all non-script blocks is available to the script block via camelcased global strings:
+By default, the content of all non-`script` blocks is available to the `script` block via camel-cased globals as strings:
 
 ```js
 // webpack.config.js
@@ -45,7 +45,7 @@ console.log(myCrazyBlockName); // 'something handy'
 </script>
 ```
 
-Blocks can also be processed by webpack loaders though, as if they were individual files:
+However, blocks can also be processed by webpack loaders, as if they were individual files:
 
 ```js
 // webpack.config.js
