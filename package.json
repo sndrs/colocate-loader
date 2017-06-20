@@ -4,7 +4,8 @@
     "description": "Webpack loader for collocated modules",
     "main": "index.js",
     "scripts": {
-        "test": "jest"
+        "test": "jest",
+        "test:ci": "npm test -- --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
     },
     "author": "Alex Sanders <a@snd.rs>",
     "license": "ISC",
