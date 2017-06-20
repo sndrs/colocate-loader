@@ -33,34 +33,35 @@ However, blocks can also be processed by webpack loaders, as if they were indivi
 // webpack.config.js
 
 module.exports = {
-	...
-    module: {
-        rules: [
-            {
-                test: /\.html$/,
-                use: {
-                    loader: 'colocate-loader',
-                    options: {
-                        rules: [
-                            {
-                                test: /^style$/,
-                                loader: 'css-loader', // `style` is now a css-loader object
-                            },
-                            {
-                                test: /^script$/,
-                                use: [{ loader: 'babel-loader' }], // the script block is now es5 etc.
-                            },
-                            {
-                                test: 'my-crazy-block-name',
-                                loader: 'my-crazy-block-name-loader' // who knows...
-                            }
-                        ],
-                    },
-                },
-            },
-        ],
-    },
-}
+  ...
+  module: {
+    rules: [
+      {
+        test: /\.html$/,
+        use: {
+          loader: "colocate-loader",
+          options: {
+            rules: [
+              {
+                test: /^style$/,
+                loader: "css-loader" // `style` is now a css-loader object
+              },
+              {
+                test: /^script$/,
+                use: [{ loader: "babel-loader" }] // the script block is now es5 etc.
+              },
+              {
+                test: "my-crazy-block-name",
+                loader: "my-crazy-block-name-loader" // who knows...
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+};
+
 ```
 
 ## How it works
