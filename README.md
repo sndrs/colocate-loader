@@ -1,4 +1,4 @@
-# collocate-loader [![Build Status](https://travis-ci.org/sndrs/collocate-loader.svg?branch=master)](https://travis-ci.org/sndrs/collocate-loader) [![Coverage Status](https://coveralls.io/repos/github/sndrs/collocate-loader/badge.svg?branch=master)](https://coveralls.io/github/sndrs/collocate-loader?branch=master)
+# collocation-loader [![Build Status](https://travis-ci.org/sndrs/collocation-loader.svg?branch=master)](https://travis-ci.org/sndrs/collocation-loader) [![Coverage Status](https://coveralls.io/repos/github/sndrs/collocation-loader/badge.svg?branch=master)](https://coveralls.io/github/sndrs/collocation-loader?branch=master)
 
 Experimental webpack loader for collocated modules. Very much inspired by [`.vue`](https://vuejs.org/v2/guide/single-file-components.html) and [svelte](https://svelte.technology/guide#understanding-svelte-components) components, but (almost) completely unopinionated about your blocks and their behaviour.
 
@@ -16,7 +16,7 @@ module.exports = {
             {
                 test: /\.html$/,
                 use: {
-                    loader: 'collocate-loader',
+                    loader: 'collocation-loader',
                 },
             },
         ],
@@ -57,7 +57,7 @@ module.exports = {
             {
                 test: /\.html$/,
                 use: {
-                    loader: 'collocate-loader',
+                    loader: 'collocation-loader',
                     options: {
                         rules: [
                             {

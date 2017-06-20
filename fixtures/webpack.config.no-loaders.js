@@ -13,7 +13,7 @@ module.exports = {
 			{
 				test: /.html$/,
 				use: {
-					loader: 'collocate-loader',
+					loader: 'collocation-loader',
 				},
 			},
 		],
