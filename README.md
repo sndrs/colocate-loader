@@ -5,6 +5,8 @@ Experimental webpack loader for collocated modules.
 ## Example
 
 ```html
+<!-- myModule.html -->
+
 <style>
     .red {
         color: red;
@@ -27,6 +29,7 @@ Blocks can also pass through webpack loaders as if they were individual files:
 
 ```js
 // webpack.config.js
+
 module.exports = {
 	...
     module: {
