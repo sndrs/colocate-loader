@@ -9,22 +9,25 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.1",
+    "loader-utils": "^1.1.0",
+    "webpack": "^2.6.1"
+  },
+  "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.5.2",
-    "cheerio": "^1.0.0-rc.1",
-    "css": "^2.2.1",
-    "css-loader": "^0.28.4",
-    "htmlparser2": "^3.9.2",
-    "jsdom": "^11.0.0",
-    "loader-utils": "^1.1.0",
-    "multi-loader": "^0.1.0",
+    "eslint": "^4.0.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-config-prettier": "^2.2.0",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-prettier": "^2.1.2",
     "node-sass": "^4.5.3",
     "prettier": "^1.4.4",
-    "raw-loader": "^0.5.1",
     "sass-loader": "^6.0.6",
-    "styletron-loader": "^0.5.0",
-    "vue-loader": "^12.2.1",
-    "webpack": "^2.6.1"
+    "styletron-loader": "^0.5.0"
+  },
+  "peerDependencies": {
+    "raw-loader": "^0.5.1"
   }
 }

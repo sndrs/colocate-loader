@@ -1,41 +1,90 @@
 const loaderUtils = require('loader-utils');
+const { normalizeUse, normalizeCondition } = require('webpack/lib/RuleSet');
+const cheerio = require('cheerio');
 
-const elementRegex = element =>
-    new RegExp(`<${element}>([\\s\\S]*)<\\/${element}>`, 'i');
+const getBlockRequest = (block, path) =>
+	`component-loader?block=${block}!${path}`;
 
-module.exports = function(content) {
-    const options = Object.assign(
-        {},
-        { el: 'script' },
-        loaderUtils.getOptions(this)
-    );
+const getBlockContent = (block, content) =>
+	cheerio
+		.load(content, {
+			ignoreWhitespace: true,
+			xmlMode: true,
+		})(block)
+		.map((i, _) => cheerio(_).html())
+		.get()
+		.join('\n');
 
-    const regex = elementRegex(options.el);
+const getLoadersForBlock = (block = '', rules = []) => {
+	const rule = rules.find(_ => normalizeCondition(_.test)(block));
+	if (!rule) return '';
+	return (
+		rule.loader ||
+		normalizeUse(rule.use)
+			.reverse()
+			.map(_ => `${_.loader}${_.options ? `?${_.options}` : ''}`)
+			.join('!')
+	);
+};
 
-    const styleLoaders =
-        (options.loaders &&
-            options.loaders.style &&
-            options.loaders.style.join('!')) ||
-        '';
-    const templateLoaders =
-        (options.loaders &&
-            options.loaders.template &&
-            options.loaders.template.join('!')) ||
-        '';
+// const formatLoaderAsRequest = ;
 
-    const [, elSrc] = content.match(regex) || [];
+module.exports = function loadComponent(content) {
+	const callback = this.async();
 
-    if (elSrc) {
-        const injectedDeps = `
-const style = require('!!${styleLoaders}!component-loader?el=style!${this
-            .resourcePath}');
-const template = require('!!${templateLoaders}!component-loader?el=template!${this
-            .resourcePath}');
-`;
-        return `
-            ${options.el === 'script' ? injectedDeps : ''}
-            ${elSrc}`;
-    }
+	const options = loaderUtils.getOptions(this);
 
-    return `module.exports = undefined`;
+	if (options.block) {
+		const blockContent = getBlockContent(options.block, content);
+		callback(null, blockContent);
+	} else {
+		const rules = loaderUtils.getOptions(this).rules;
+
+		const injectedDeps = cheerio
+			.load(content, {
+				ignoreWhitespace: true,
+				xmlMode: true,
+			})(`:root`)
+			.map((i, block) => block.name)
+			.get()
+			.filter(block => block !== 'script')
+			.map(
+				block =>
+					`var ${block} = require('!!${getLoadersForBlock(block, rules) ||
+						'raw-loader'}!${getBlockRequest(block, this.resourcePath)}')`
+			);
+
+		// callback(
+		// 	null,
+		// 	`
+		// 		${injectedDeps.join(';\n')};
+		// 		${getBlockRequest('script', this.resourcePath)}
+		// 	`
+		// );
+
+		this.loadModule(
+			`!!${getLoadersForBlock('script', rules)}!${getBlockRequest(
+				'script',
+				this.resourcePath
+			)}`,
+			(err, source, sourceMap) => {
+				const exportSrc = `
+					${injectedDeps.join(';\n')};
+					${source}
+				`;
+				callback(err, exportSrc, sourceMap);
+			}
+		);
+	}
+};
+
+module.exports.pitch = function loadScript(
+	remainingRequest,
+	precedingRequest,
+	data
+) {
+	const { block } = loaderUtils.getOptions(this);
+	if (!block) {
+		this.loaders.push(getLoadersForBlock('script', rules))
+	}
 };
