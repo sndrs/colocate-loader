@@ -1,5 +1,5 @@
 {
-    "name": "collocation-loader",
+    "name": "colocate-loader",
     "version": "0.0.1",
     "description": "Webpack loader for collocated modules",
     "main": "index.js",
@@ -66,10 +66,10 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://sndrs@github.com/sndrs/collocation-loader.git"
+        "url": "git+https://sndrs@github.com/sndrs/colocate-loader.git"
     },
     "bugs": {
-        "url": "https://github.com/sndrs/collocation-loader/issues"
+        "url": "https://github.com/sndrs/colocate-loader/issues"
     },
-    "homepage": "https://github.com/sndrs/collocation-loader#readme"
+    "homepage": "https://github.com/sndrs/colocate-loader#readme"
 }

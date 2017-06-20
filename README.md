@@ -1,4 +1,4 @@
-# collocation-loader [![Build Status](https://travis-ci.org/sndrs/collocation-loader.svg?branch=master)](https://travis-ci.org/sndrs/collocation-loader) [![Coverage Status](https://coveralls.io/repos/github/sndrs/collocation-loader/badge.svg?branch=master)](https://coveralls.io/github/sndrs/collocation-loader?branch=master)
+# colocate-loader [![Build Status](https://travis-ci.org/sndrs/colocate-loader.svg?branch=master)](https://travis-ci.org/sndrs/colocate-loader) [![Coverage Status](https://coveralls.io/repos/github/sndrs/colocate-loader/badge.svg?branch=master)](https://coveralls.io/github/sndrs/colocate-loader?branch=master)
 
 Experimental webpack loader for collocated modules. Very much inspired by [`.vue`](https://vuejs.org/v2/guide/single-file-components.html) and [svelte](https://svelte.technology/guide#understanding-svelte-components) components, but (almost) completely unopinionated about your blocks and their behaviour.
 
@@ -39,7 +39,7 @@ module.exports = {
             {
                 test: /\.html$/,
                 use: {
-                    loader: 'collocation-loader',
+                    loader: 'colocate-loader',
                     options: {
                         rules: [
                             {
@@ -67,9 +67,9 @@ module.exports = {
 Given config above, the script block is effectively turned into:
 
 ```js
-import style from 'css-loader!collocation-loader?block=style!myModule.html';
-import template from 'collocation-loader?block=template!myModule.html';
-import myCrazyBlockName from 'my-crazy-block-name-loader!collocation-loader?block=my-crazy-block-name!myModule.html';
+import style from 'css-loader!colocate-loader?block=style!myModule.html';
+import template from 'colocate-loader?block=template!myModule.html';
+import myCrazyBlockName from 'my-crazy-block-name-loader!colocate-loader?block=my-crazy-block-name!myModule.html';
 
 console.log(style); 
 console.log(template); 
