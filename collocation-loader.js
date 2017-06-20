@@ -5,7 +5,7 @@ const cheerio = require('cheerio');
 const camelCase = require('camelcase');
 
 const getBlockRequest = (block, path) =>
-	`collocate-loader?block=${block}!${path}`;
+	`collocation-loader?block=${block}!${path}`;
 
 const getBlockContent = (block, content) =>
 	cheerio
