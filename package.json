@@ -4,16 +4,14 @@
     "description": "Webpack loader for collocated modules",
     "main": "index.js",
     "scripts": {
-        "start": "webpack"
+        "test": "jest"
     },
     "author": "Alex Sanders <a@snd.rs>",
     "license": "ISC",
     "dependencies": {
         "camelcase": "^4.1.0",
         "cheerio": "^1.0.0-rc.1",
-        "loader-utils": "^1.1.0",
-        "raw-loader": "^0.5.1",
-        "webpack": "^2.6.1"
+        "loader-utils": "^1.1.0"
     },
     "devDependencies": {
         "babel-core": "^6.25.0",
@@ -25,17 +23,33 @@
         "eslint-plugin-import": "^2.3.0",
         "eslint-plugin-prettier": "^2.1.2",
         "jest": "^20.0.4",
-        "node-sass": "^4.5.3",
+        "memory-fs": "^0.4.1",
         "prettier": "^1.4.4",
-        "sass-loader": "^6.0.6",
-        "styletron-loader": "^0.5.0"
+        "raw-loader": "^0.5.1",
+        "styletron-loader": "^0.5.0",
+        "webpack": "^2.6.1"
+    },
+    "peerDependencies": {
+        "raw-loader": "^0.5.1",
+        "webpack": "^2.6.1"
     },
     "babel": {
-        "presets": ["env"]
+        "presets": [
+            "env"
+        ]
     },
     "eslintConfig": {
-        "extends": ["airbnb-base", "prettier"],
-        "plugins": ["import", "prettier"],
+        "env": {
+            "jest": true
+        },
+        "extends": [
+            "airbnb-base",
+            "prettier"
+        ],
+        "plugins": [
+            "import",
+            "prettier"
+        ],
         "rules": {
             "prettier/prettier": [
                 "error",

@@ -1,14 +1,17 @@
 const path = require('path');
 
+const rootDir = path.resolve(__dirname, '..');
+
 module.exports = {
-	entry: './src/index.js',
+	entry: './collocated',
+	context: __dirname,
 	output: {
-		filename: 'dist/bundle.js',
+		path: `${rootDir}/dist`,
 	},
 	module: {
 		rules: [
 			{
-				test: /\.cmp\.html$/,
+				test: /.html$/,
 				use: {
 					loader: 'collocate-loader',
 					options: {
@@ -28,9 +31,9 @@ module.exports = {
 		],
 	},
 	resolveLoader: {
-		modules: [path.resolve(__dirname, 'loader'), 'node_modules'],
+		modules: [rootDir, 'node_modules'],
 	},
 	resolve: {
-		extensions: ['*', '.js', '.json', '.cmp.html'],
+		extensions: ['.js', '.html'],
 	},
 };
