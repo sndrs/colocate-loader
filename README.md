@@ -1,6 +1,6 @@
 # colocate-loader [![Build Status](https://travis-ci.org/sndrs/colocate-loader.svg?branch=master)](https://travis-ci.org/sndrs/colocate-loader) [![Coverage Status](https://coveralls.io/repos/github/sndrs/colocate-loader/badge.svg?branch=master)](https://coveralls.io/github/sndrs/colocate-loader?branch=master)
 
-Experimental webpack loader for collocated modules. Very much inspired by [`.vue`](https://vuejs.org/v2/guide/single-file-components.html) and [svelte](https://svelte.technology/guide#understanding-svelte-components) components, but (almost) completely unopinionated about your blocks and their behaviour.
+Experimental webpack loader for colocated modules. Very much inspired by [`.vue`](https://vuejs.org/v2/guide/single-file-components.html) and [svelte](https://svelte.technology/guide#understanding-svelte-components) components, but (almost) completely unopinionated about your blocks and their behaviour.
 
 ## Example
 

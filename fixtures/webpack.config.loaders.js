@@ -3,7 +3,7 @@ const path = require('path');
 const rootDir = path.resolve(__dirname, '..');
 
 module.exports = {
-	entry: './collocated',
+	entry: './colocated',
 	context: __dirname,
 	output: {
 		path: `${rootDir}/dist`,

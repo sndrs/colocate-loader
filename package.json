@@ -1,7 +1,7 @@
 {
     "name": "colocate-loader",
     "version": "0.0.1",
-    "description": "Webpack loader for collocated modules",
+    "description": "Webpack loader for colocated modules",
     "main": "index.js",
     "scripts": {
         "test": "jest",
