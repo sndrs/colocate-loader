@@ -4,6 +4,26 @@ Experimental webpack loader for collocated modules.
 
 ## Example
 
+By default, the content of all non-script blocks is available to the script block via camelcased global strings:
+
+```js
+// webpack.config.js
+
+module.exports = {
+	...
+    module: {
+        rules: [
+            {
+                test: /\.html$/,
+                use: {
+                    loader: 'collocate-loader',
+                },
+            },
+        ],
+    },
+}
+```
+
 ```html
 <!-- myModule.html -->
 
@@ -19,13 +39,13 @@ Experimental webpack loader for collocated modules.
 <my-crazy-block-name>something handy</my-crazy-block-name>
 
 <script>
-console.log(style); // .red { color: red; border-color: red; }
-console.log(template); // <p>hello!</p>
-console.log(myCrazyBlockName); // something handy
+console.log(style); // '.red { color: red; border-color: red; }'
+console.log(template); // '<p>hello!</p>'
+console.log(myCrazyBlockName); // 'something handy'
 </script>
 ```
 
-Blocks can also be processed by webpack loaders as if they were individual files:
+Blocks can also be processed by webpack loaders though, as if they were individual files:
 
 ```js
 // webpack.config.js
@@ -42,15 +62,15 @@ module.exports = {
                         rules: [
                             {
                                 test: /^style$/,
-                                loader: 'css-loader',
+                                loader: 'css-loader', // `style` is now a css-loader object
                             },
                             {
                                 test: /^script$/,
-                                use: [{ loader: 'babel-loader' }],
+                                use: [{ loader: 'babel-loader' }], // the script block is now es5 etc.
                             },
                             {
                                 test: 'my-crazy-block-name',
-                                loader: 'my-crazy-block-name-loader'
+                                loader: 'my-crazy-block-name-loader' // who knows...
                             }
                         ],
                     },
