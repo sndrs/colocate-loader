@@ -6,24 +6,6 @@ Experimental webpack loader for collocated modules. Very much inspired by [`.vue
 
 By default, the content of all non-`script` blocks is available as strings to the `script` block, via camel-cased globals:
 
-```js
-// webpack.config.js
-
-module.exports = {
-	...
-    module: {
-        rules: [
-            {
-                test: /\.html$/,
-                use: {
-                    loader: 'collocation-loader',
-                },
-            },
-        ],
-    },
-}
-```
-
 ```html
 <!-- myModule.html -->
 
@@ -79,4 +61,17 @@ module.exports = {
         ],
     },
 }
+```
+
+## How it works
+Given config above, the script block is effectively turned into:
+
+```js
+import style from 'css-loader!collocation-loader?block=style!myModule.html';
+import template from 'collocation-loader?block=template!myModule.html';
+import myCrazyBlockName from 'my-crazy-block-name-loader!collocation-loader?block=my-crazy-block-name!myModule.html';
+
+console.log(style); 
+console.log(template); 
+console.log(myCrazyBlockName); 
 ```
