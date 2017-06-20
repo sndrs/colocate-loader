@@ -1,4 +1,4 @@
-# collocate-loader
+# collocate-loader [![Build Status](https://travis-ci.org/sndrs/collocate-loader.svg?branch=master)](https://travis-ci.org/sndrs/collocate-loader) [![Coverage Status](https://coveralls.io/repos/github/sndrs/collocate-loader/badge.svg?branch=master)](https://coveralls.io/github/sndrs/collocate-loader?branch=master)
 
 Experimental webpack loader for collocated modules.
 
