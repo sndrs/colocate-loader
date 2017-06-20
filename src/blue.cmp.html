@@ -1,20 +1,16 @@
 <style>
     .red {
         color: red;
-        background-color: blue;
-    }
-    .blue {
-        background-color: blue
-    }
-    @media (max-width: 100px) {
-        .blue {
-            background-color: red;
-        }
+        border-color: red;
     }
 </style>
 
-<script>
-console.log('style:', style);
-</script>
+<template><p>hello!</p></template>
 
-<template><p style="${style.red}">ignore me</p></template>
+<my-crazy-block-name>something handy</my-crazy-block-name>
+
+<script>
+console.log(style);
+console.log(template);
+console.log(myCrazyBlockName);
+</script>

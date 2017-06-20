@@ -10,7 +10,7 @@ module.exports = {
 			{
 				test: /\.cmp\.html$/,
 				use: {
-					loader: 'component-loader',
+					loader: 'collocate-loader',
 					options: {
 						rules: [
 							{

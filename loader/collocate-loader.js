@@ -1,9 +1,11 @@
 const loaderUtils = require('loader-utils');
 const { normalizeUse, normalizeCondition } = require('webpack/lib/RuleSet');
+
 const cheerio = require('cheerio');
+const camelCase = require('camelcase');
 
 const getBlockRequest = (block, path) =>
-	`component-loader?block=${block}!${path}`;
+	`collocate-loader?block=${block}!${path}`;
 
 const getBlockContent = (block, content) =>
 	cheerio
@@ -27,18 +29,16 @@ const getLoadersForBlock = (block = '', rules = []) => {
 	);
 };
 
-// const formatLoaderAsRequest = ;
-
 module.exports = function loadComponent(content) {
 	const callback = this.async();
 
-	const options = loaderUtils.getOptions(this);
+	const options = loaderUtils.getOptions(this) || {};
 
 	if (options.block) {
 		const blockContent = getBlockContent(options.block, content);
 		callback(null, blockContent);
 	} else {
-		const rules = loaderUtils.getOptions(this).rules;
+		const rules = options.rules;
 
 		const injectedDeps = cheerio
 			.load(content, {
@@ -50,17 +50,11 @@ module.exports = function loadComponent(content) {
 			.filter(block => block !== 'script')
 			.map(
 				block =>
-					`var ${block} = require('!!${getLoadersForBlock(block, rules) ||
-						'raw-loader'}!${getBlockRequest(block, this.resourcePath)}')`
+					`var ${camelCase(block)} = require('!!${getLoadersForBlock(
+						block,
+						rules
+					) || 'raw-loader'}!${getBlockRequest(block, this.resourcePath)}')`
 			);
-
-		// callback(
-		// 	null,
-		// 	`
-		// 		${injectedDeps.join(';\n')};
-		// 		${getBlockRequest('script', this.resourcePath)}
-		// 	`
-		// );
 
 		this.loadModule(
 			`!!${getLoadersForBlock('script', rules)}!${getBlockRequest(
@@ -75,16 +69,5 @@ module.exports = function loadComponent(content) {
 				callback(err, exportSrc, sourceMap);
 			}
 		);
-	}
-};
-
-module.exports.pitch = function loadScript(
-	remainingRequest,
-	precedingRequest,
-	data
-) {
-	const { block } = loaderUtils.getOptions(this);
-	if (!block) {
-		this.loaders.push(getLoadersForBlock('script', rules))
 	}
 };

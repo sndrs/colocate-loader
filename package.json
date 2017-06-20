@@ -1,16 +1,18 @@
 {
-  "name": "component-looader",
-  "version": "1.0.0",
-  "description": "",
+  "name": "collocate-loader",
+  "version": "0.0.1",
+  "description": "Webpack loader for collocated modules",
   "main": "index.js",
   "scripts": {
     "start": "webpack"
   },
-  "author": "",
+  "author": "Alex Sanders <a@snd.rs>",
   "license": "ISC",
   "dependencies": {
+    "camelcase": "^4.1.0",
     "cheerio": "^1.0.0-rc.1",
     "loader-utils": "^1.1.0",
+    "raw-loader": "^0.5.1",
     "webpack": "^2.6.1"
   },
   "devDependencies": {
@@ -27,7 +29,12 @@
     "sass-loader": "^6.0.6",
     "styletron-loader": "^0.5.0"
   },
-  "peerDependencies": {
-    "raw-loader": "^0.5.1"
-  }
+  "repository": {
+    "type": "git",
+    "url": "git+https://sndrs@github.com/sndrs/collocate-loader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sndrs/collocate-loader/issues"
+  },
+  "homepage": "https://github.com/sndrs/collocate-loader#readme"
 }
