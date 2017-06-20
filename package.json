@@ -1,40 +1,59 @@
 {
-  "name": "collocate-loader",
-  "version": "0.0.1",
-  "description": "Webpack loader for collocated modules",
-  "main": "index.js",
-  "scripts": {
-    "start": "webpack"
-  },
-  "author": "Alex Sanders <a@snd.rs>",
-  "license": "ISC",
-  "dependencies": {
-    "camelcase": "^4.1.0",
-    "cheerio": "^1.0.0-rc.1",
-    "loader-utils": "^1.1.0",
-    "raw-loader": "^0.5.1",
-    "webpack": "^2.6.1"
-  },
-  "devDependencies": {
-    "babel-core": "^6.25.0",
-    "babel-loader": "^7.0.0",
-    "babel-preset-env": "^1.5.2",
-    "eslint": "^4.0.0",
-    "eslint-config-airbnb-base": "^11.2.0",
-    "eslint-config-prettier": "^2.2.0",
-    "eslint-plugin-import": "^2.3.0",
-    "eslint-plugin-prettier": "^2.1.2",
-    "node-sass": "^4.5.3",
-    "prettier": "^1.4.4",
-    "sass-loader": "^6.0.6",
-    "styletron-loader": "^0.5.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://sndrs@github.com/sndrs/collocate-loader.git"
-  },
-  "bugs": {
-    "url": "https://github.com/sndrs/collocate-loader/issues"
-  },
-  "homepage": "https://github.com/sndrs/collocate-loader#readme"
+    "name": "collocate-loader",
+    "version": "0.0.1",
+    "description": "Webpack loader for collocated modules",
+    "main": "index.js",
+    "scripts": {
+        "start": "webpack"
+    },
+    "author": "Alex Sanders <a@snd.rs>",
+    "license": "ISC",
+    "dependencies": {
+        "camelcase": "^4.1.0",
+        "cheerio": "^1.0.0-rc.1",
+        "loader-utils": "^1.1.0",
+        "raw-loader": "^0.5.1",
+        "webpack": "^2.6.1"
+    },
+    "devDependencies": {
+        "babel-core": "^6.25.0",
+        "babel-loader": "^7.0.0",
+        "babel-preset-env": "^1.5.2",
+        "eslint": "^4.0.0",
+        "eslint-config-airbnb-base": "^11.2.0",
+        "eslint-config-prettier": "^2.2.0",
+        "eslint-plugin-import": "^2.3.0",
+        "eslint-plugin-prettier": "^2.1.2",
+        "jest": "^20.0.4",
+        "node-sass": "^4.5.3",
+        "prettier": "^1.4.4",
+        "sass-loader": "^6.0.6",
+        "styletron-loader": "^0.5.0"
+    },
+    "babel": {
+        "presets": ["env"]
+    },
+    "eslintConfig": {
+        "extends": ["airbnb-base", "prettier"],
+        "plugins": ["import", "prettier"],
+        "rules": {
+            "prettier/prettier": [
+                "error",
+                {
+                    "singleQuote": true,
+                    "trailingComma": "es5",
+                    "bracketSpacing": true,
+                    "useTabs": true
+                }
+            ]
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://sndrs@github.com/sndrs/collocate-loader.git"
+    },
+    "bugs": {
+        "url": "https://github.com/sndrs/collocate-loader/issues"
+    },
+    "homepage": "https://github.com/sndrs/collocate-loader#readme"
 }
