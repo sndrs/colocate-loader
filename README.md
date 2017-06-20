@@ -4,7 +4,7 @@ Experimental webpack loader for collocated modules. Very much inspired by [`.vue
 
 ## Example
 
-By default, the content of all non-`script` blocks is available to the `script` block via camel-cased globals as strings:
+By default, the content of all non-`script` blocks is available as strings to the `script` block, via camel-cased globals:
 
 ```js
 // webpack.config.js
