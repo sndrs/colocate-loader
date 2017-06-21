@@ -65,7 +65,7 @@ module.exports = {
 ```
 
 ## How it works
-Given config above, the script block is effectively turned into:
+Non-`script` blocks are injected as imports into the `script` block, once it has passed through its loaders. So given the config above, `myModule.html` would be transformed into the following:
 
 ```js
 import style from 'css-loader!colocate-loader?block=style!myModule.html';
