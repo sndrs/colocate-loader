@@ -1,3 +1,4 @@
+// @flow
 /* eslint-disable global-require, no-console,import/no-dynamic-require */
 
 const path = require('path');
